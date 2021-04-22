@@ -20,7 +20,7 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
-      repo-token: ${{secrets.PLUGIN_ACTIONS}}
+      GITHUB-TOKEN: ${{secrets.PLUGIN_ACTIONS}}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -50,6 +50,9 @@ jobs:
 #       - uses: ./.github/actions/JuBiter-Plugin
  
       - run: flutter pub get
+        env:
+          GITHUB-TOKEN: ${{secrets.PLUGIN_ACTIONS}}
+            
 #       - run: flutter analyze
       - run: flutter build apk
         working-directory: ./

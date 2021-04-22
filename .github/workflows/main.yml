@@ -46,7 +46,7 @@ jobs:
 #           path: ./.github/actions/JuBiter-Plugin
           
       - run: flutter pub get
-      - run: flutter analyze
+#       - run: flutter analyze
       - run: flutter build apk
       
       # 上传 app 文件

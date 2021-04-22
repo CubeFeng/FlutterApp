@@ -49,9 +49,14 @@ jobs:
           
 #       - uses: ./.github/actions/JuBiter-Plugin
 
-      - name: Config git
-        run: |
-          git config --global github.token  ${{secrets.PLUGIN_ACTIONS}}
+#       - name: Config git
+#         run: |
+#           git config --global github.token  ${{secrets.PLUGIN_ACTIONS}}
+
+      - name: Configure git for private modules 
+        env: 
+          TOKEN: ${{ secrets.PLUGIN_ACTIONS }} 
+        run: git config --global url."https://CubeFeng:${TOKEN}@github.com".insteadOf "https://github.com"
  
       - run: flutter pub get
         env:

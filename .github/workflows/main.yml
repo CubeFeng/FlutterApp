@@ -19,6 +19,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      repo-token: ${{secrets.PLUGIN_ACTIONS}}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -37,13 +39,13 @@ jobs:
           channel: "stable" 
           
       # 引用私有库
-      - name: get jubiter-plugin
-        uses: actions/checkout@v2
-        with:
-          repository: JubiterWallet/JuBiter-Plugin
-          ref: 2.3
-          token: ${{secrets.PLUGIN_ACTIONS}}
-          path: ./.github/actions/JuBiter-Plugin
+#       - name: get jubiter-plugin
+#         uses: actions/checkout@v2
+#         with:
+#           repository: JubiterWallet/JuBiter-Plugin
+#           ref: 2.3
+#           token: ${{secrets.PLUGIN_ACTIONS}}
+#           path: ./.github/actions/JuBiter-Plugin
           
 #       - uses: ./.github/actions/JuBiter-Plugin
  

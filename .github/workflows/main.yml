@@ -51,8 +51,8 @@ jobs:
 
       - name: Config git
         run: |
-          git config --global github.token  ${{secrets.PLUGIN_ACTIONS}} 
-          git clone https://github.com/JubiterWallet/JuBiter-Plugin.git
+          git config --global github.token  ${{secrets.PLUGIN_ACTIONS}} \
+          git clone https://github.com/JubiterWallet/JuBiter-Plugin.git repo
  
       - run: flutter pub get
         env:

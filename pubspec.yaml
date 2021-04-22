@@ -29,6 +29,11 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  jubiter_plugin:
+    git:
+      url: https://github.com/JubiterWallet/JuBiter-Plugin.git
+      ref: a8258f21daec5a0061e9eae31cc5544a667e22f9
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

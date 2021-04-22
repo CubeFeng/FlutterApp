@@ -24,8 +24,6 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        env:
-          repo-token: ${{ secrets.PLUGIN_ACTIONS }}
       
       # flutter java 环境
       - uses: actions/setup-java@v2
@@ -38,9 +36,16 @@ jobs:
         with:
           channel: "stable" 
           
+      # 引用私有库
+      - name: get jubiter-plugin
+        uses: actions/checkout@v2
+        with:
+          repository: JubiterWallet/JuBiter-Plugin
+          ref: 2.3
+          token: ${{secrets.PLUGIN_ACTIONS}}
+          path: ./.github/actions/JuBiter-Plugin
+          
       - run: flutter pub get
-        env: 
-          GITHUB_TOKEN: ${{ secrets.PLUGIN_ACTIONS }}
       - run: flutter analyze
       - run: flutter build apk
       

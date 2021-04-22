@@ -24,8 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-        with: 
-          token: ${{secrets.PLUGIN_ACTIONS}}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PLUGIN_ACTIONS }}
       
       # flutter java 环境
       - uses: actions/setup-java@v2

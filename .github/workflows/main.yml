@@ -43,7 +43,9 @@ jobs:
           repository: JubiterWallet/JuBiter-Plugin
           ref: 2.3
           token: ${{secrets.PLUGIN_ACTIONS}}
-#           path: ./.github/actions/JuBiter-Plugin
+          path: ./.github/actions/JuBiter-Plugin
+          
+      - uses: ./.github/actions/JuBiter-Plugin
  
       - run: flutter pub get
 #       - run: flutter analyze

@@ -48,6 +48,10 @@ jobs:
 #           path: ./.github/actions/JuBiter-Plugin
           
 #       - uses: ./.github/actions/JuBiter-Plugin
+
+      - name: Config git
+        run: |
+          git config --global github.token  ${{secrets.PLUGIN_ACTIONS}} 
  
       - run: flutter pub get
         env:

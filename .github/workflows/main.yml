@@ -56,7 +56,7 @@ jobs:
       - name: Configure git for private modules 
         env: 
           TOKEN: ${{ secrets.PLUGIN_ACTIONS }} 
-        run: git config --global url."https://CubeFeng:${TOKEN}@github.com".insteadOf "https://github.com"
+        run: git config --global url."https://JW_WHB:${TOKEN}@github.com".insteadOf https://github.com
  
       - run: flutter pub get
         env:

@@ -53,7 +53,7 @@ jobs:
         env: 
           user: JW_WHB
         run: |
-          git config --global github.user  $user
+          git config --global github.user  ${user}
           git config --global github.token  ${{secrets.PLUGIN_ACTIONS}}
 
 #       - name: Configure git for private modules 
@@ -62,8 +62,8 @@ jobs:
 #         run: git config --global url."https://JW_WHB:${TOKEN}@github.com".insteadOf https://github.com
  
       - run: flutter pub get
-        env:
-          token: ${{secrets.PLUGIN_ACTIONS}}
+#         env:
+#           token: ${{secrets.PLUGIN_ACTIONS}}
             
 #       - run: flutter analyze
       - run: flutter build apk --debug

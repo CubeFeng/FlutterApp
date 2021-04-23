@@ -51,9 +51,9 @@ jobs:
 
       - name: Config git
         env: 
-          USER: JW_WHB
+          user: JW_WHB
         run: |
-          git config --global github.user  ${{USER}}
+          git config --global github.user  $user
           git config --global github.token  ${{secrets.PLUGIN_ACTIONS}}
 
 #       - name: Configure git for private modules 

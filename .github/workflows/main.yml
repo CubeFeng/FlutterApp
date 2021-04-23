@@ -63,15 +63,15 @@ jobs:
           token: ${{secrets.PLUGIN_ACTIONS}}
             
 #       - run: flutter analyze
-      - run: flutter build apk
-        working-directory: ./
+      - run: flutter build apk --debug
+#         working-directory: ./
       
       # 上传 app 文件
       - name: upload artifects
         uses: actions/upload-artifact@v2
         with:
           name: jubiter-android-app
-          path: build/app/outputs/flutter-apk/app-release.apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
 
       # Runs a single command using the runners shell
 #       - name: Run a one-line script

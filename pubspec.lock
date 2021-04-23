@@ -57,6 +57,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.2.0"
+  fixnum:
+    dependency: transitive
+    description:
+      name: fixnum
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -67,6 +74,22 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  jubiter_plugin:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: a8258f21daec5a0061e9eae31cc5544a667e22f9
+      resolved-ref: a8258f21daec5a0061e9eae31cc5544a667e22f9
+      url: "https://github.com/JubiterWallet/JuBiter-Plugin.git"
+    source: git
+    version: "2.3.0"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "1.0.0"
   matcher:
     dependency: transitive
     description:
@@ -88,6 +111,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.8.0"
+  protobuf:
+    dependency: transitive
+    description:
+      name: protobuf
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -150,4 +180,5 @@ packages:
     source: hosted
     version: "2.1.0"
 sdks:
-  dart: ">=2.12.0-0.0 <3.0.0"
+  dart: ">=2.12.0 <3.0.0"
+  flutter: ">=1.12.0"

@@ -39,7 +39,7 @@ jobs:
           release_name: Release ${{ github.ref }}
           draft: false
           prerelease: false
-          body_path: ./release_logs/${{github.ref}}*.md
+          body_path: './release_logs/${{github.ref}}**.md'
 
   # This workflow contains a single job called "build"
   build:

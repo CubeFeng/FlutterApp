@@ -20,6 +20,27 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+
+  create_release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    outputs:
+      assetURL: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+          body_path: ./release_logs/${{github.ref}}*.md
+
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on

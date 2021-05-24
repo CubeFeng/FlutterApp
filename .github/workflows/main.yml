@@ -51,7 +51,7 @@ jobs:
       - name: Check tag version
 #         if: ${{ steps.regex-match.outputs.match != '' }}
         run: |
-            echo "check regex >>> startsWith(github.event.ref, 'refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$')"
+            echo "check regex >>> ${startsWith(github.event.ref, 'refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$')}"
       
       # flutter java 环境
       - uses: actions/setup-java@v2

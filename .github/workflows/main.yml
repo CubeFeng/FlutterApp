@@ -44,7 +44,7 @@ jobs:
           regex: '^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$'
 
       - name: Check tag version
-        if: ${{ steps.regex-match.outputs.match != '' }}
+#         if: ${{ steps.regex-match.outputs.match != '' }}
         run: |
             echo "check regex >>> ${{ steps.regex-match.outputs.match != '' }}"
       

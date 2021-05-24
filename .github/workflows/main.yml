@@ -89,12 +89,12 @@ jobs:
 #           token: ${{secrets.PLUGIN_ACTIONS}}
 
 
-      - name: Create Release Notes
-        uses: Decathlon/release-notes-generator-action@v3.1.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          OUTPUT_FOLDER: temp_release_notes
-          USE_MILESTONE_TITLE: "true"
+#       - name: Create Release Notes
+#         uses: Decathlon/release-notes-generator-action@v3.1.4
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           OUTPUT_FOLDER: temp_release_notes
+#           USE_MILESTONE_TITLE: "true"
             
 #       - run: flutter analyze
       - run: flutter build apk --debug

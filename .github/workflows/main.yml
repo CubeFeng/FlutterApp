@@ -24,6 +24,7 @@ jobs:
   # 正则检测版本号
   change_tag:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
     outputs:
       # 对外返回值，true: 正则匹配符合，false: 不符合
       match_value: ${{ steps.regex-match.outputs.match != '' }}

@@ -71,8 +71,7 @@ jobs:
       - name: Check tag version
 #         if: ${{ steps.regex-match.outputs.match != '' }}
         run: |
-            echo '${{ startsWith(github.ref, 'refs/tags/[0-9]+.[0-9]+.[0-9]+') }}'
-            echo '${{ startsWith(github.ref, 'refs/tags/') }}'
+            echo ${{ needs.change_tag.outputs.match_value }}
       
       # flutter java 环境
       - uses: actions/setup-java@v2

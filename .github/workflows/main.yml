@@ -104,7 +104,7 @@ jobs:
  
       - run: flutter pub get
             
-#       - run: flutter analyze
+      - run: flutter analyze
       - run: flutter build apk --debug
       
       # 上传 app 文件

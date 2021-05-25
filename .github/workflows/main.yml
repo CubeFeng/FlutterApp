@@ -8,7 +8,8 @@ on:
   push:
     branches: [ main ]
     tags:
-      - '[0-9]+.[0-9]+.[0-9]+'
+      - '*'
+#       - '[0-9]+.[0-9]+.[0-9]+'
     
   pull_request:
     branches: [ main ]
@@ -22,52 +23,39 @@ on:
 jobs:
 
   # 正则检测版本号
-#   change_tag:
-#     runs-on: ubuntu-latest
-#     if: startsWith(github.ref, 'refs/tags/')
-#     outputs:
-#       # 对外返回值，true: 正则匹配符合，false: 不符合
-#       match_value: ${{ steps.regex-match.outputs.match != '' }}
-#     steps:
-#       - name: Get tag
-#         id: tag
-#         uses: dawidd6/action-get-tag@v1.0.0
+  change_tag:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    outputs:
+      # 对外返回值，true: 正则匹配符合，false: 不符合
+      match_value: ${{ steps.regex-match.outputs.match != '' }}
+    steps:
+      - name: Get tag
+        id: tag
+        uses: dawidd6/action-get-tag@v1.0.0
         
-#       - uses: actions-ecosystem/action-regex-match@v2
-#         id: regex-match
-#         with:
-#           text: ${{ steps.tag.outputs.tag }}
-#           regex: '^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$'
+      - uses: actions-ecosystem/action-regex-match@v2
+        id: regex-match
+        with:
+          text: ${{ steps.tag.outputs.tag }}
+          regex: '^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$'
   
 
   # This workflow contains a single job called "build"
   build:
-#     needs: [change_tag]
+    needs: [change_tag]
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-#     if: ${{ needs.change_tag.outputs.match_value }}
+    if: ${{ needs.change_tag.outputs.match_value }}
     
     #     只有tag 才运行
 #     if: startsWith(github.ref, 'refs/tags/')
-#     if: startsWith(github.event.ref, 'refs/tags/([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$')
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      
-      # 获取当前 push 的 tag 名称，用于后续的命名 apk 文件
-#       - name: Get tag
-#         id: tag
-#         uses: dawidd6/action-get-tag@v1.0.0
-        
-#       - uses: actions-ecosystem/action-regex-match@v2
-#         id: regex-match
-#         with:
-#           text: ${{ steps.tag.outputs.tag }}
-#           regex: '^([0-9]+)\.([0-9]+)\.([0-9]+)(?:-([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?(?:\+[0-9A-Za-z-]+)?$'
-
       - name: Check tag version
 #         if: ${{ steps.regex-match.outputs.match != '' }}
         run: |
@@ -123,16 +111,6 @@ jobs:
         run: git config --global url."https://${TOKEN}@github.com".insteadOf https://github.com
  
       - run: flutter pub get
-#         env:
-#           token: ${{secrets.PLUGIN_ACTIONS}}
-
-
-#       - name: Create Release Notes
-#         uses: Decathlon/release-notes-generator-action@v3.1.4
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           OUTPUT_FOLDER: temp_release_notes
-#           USE_MILESTONE_TITLE: "true"
             
 #       - run: flutter analyze
       - run: flutter build apk --debug
